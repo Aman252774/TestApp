@@ -1,0 +1,47 @@
+name: "Sample React CI Pipeline/Workflow"
+
+on:
+    push:
+        branches:
+            - main
+            - master
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latesrt
+
+        steps:
+            - name: "Setup Node JS"
+              uses: actions/setup-node@v4 # Uses tells which github actions you want to use.
+              with:  # With batata hai kaun sa version setup karna chahte ho.
+                node-version: '21'
+            
+            - name: "Check node version"
+              run: node --version
+
+            - name: "Clone the repository"
+              uses: actions/checkout@v2 #uses: This is actual predefined action.
+
+            - name: "Install the dependencies"
+              run: npm install #run: This just runs a node basic command.
+
+            - name: "List directories"
+              run: ls
+
+            - name: "Run tests"
+              run: npm test
+
+            - name: "Run Build"
+              run: npm run build
+           
+            - name: "Upload product-ready build folder"
+              uses: actions/upload-artifact@v4
+              with:
+                name: dist
+                path: build
+       
+           # - name: "Install pm2 globally"
+            #  run: npm install pm2 -g
+
+           # - name: "Deploy the aws"
+           #   run: pm2 start src
