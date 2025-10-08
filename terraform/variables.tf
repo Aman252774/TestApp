@@ -6,5 +6,6 @@ variable "instance_config" {
     aws_region     = string
     instance_count = number
     key_name       = string
+    vpc_id         = string 
   })
 }
