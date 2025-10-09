@@ -8,7 +8,7 @@ on:
 jobs: 
     deploy:
         runs-on: ubuntu-latest
-      # environment: production
+        environment: Production
 
         steps:
             - name: "Setup node.js"
@@ -27,4 +27,4 @@ jobs:
                 github-token: ${{github.token}}
 
             - name: "Deploy to vercel"
-              run: vercel --prod --token=${{secrets.AMAN_TOKEN}} --confirm --name=reactapp  
+              run: vercel --prod --token=${{secrets.ReaCtApp}} --confirm --name=reactapp  
