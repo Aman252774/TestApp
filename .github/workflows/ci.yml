@@ -13,8 +13,8 @@ jobs:
         steps:
             - name: "Setup Node JS"
               uses: actions/setup-node@v4 # Uses tells which github actions you want to use.
-              with:  # With batata hai kaun sa version setup karna chahte ho.
-                node-version: '21'
+              #with:  # With batata hai kaun sa version setup karna chahte ho.
+               # node-version: '21'
             
             - name: "Check node version"
               run: node --version
