@@ -1,0 +1,30 @@
+name: "CD Pipeline"
+
+on: 
+    workflow_run:
+        workflows: ["Sample React CI Pipeline/Workflow"] #Which workflow you want to technically target.(kaun se ci workflow ko deploy karna chahate ho.)
+        types:
+            - completed
+jobs: 
+    deploy:
+        runs-on: ubuntu-latest
+      # environment: production
+
+        steps:
+            - name: "Setup node.js"
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '21'
+            
+            - name: "Setup vercel cli"
+              run: npm install -g vercel
+
+            - name: "Downloads dist folder"
+              uses: actions/download-artifact@v4
+              with: 
+                name: dist
+                run-id: ${{ github.event.workflow_run.id}}
+                github-token: ${{github.token}}
+
+            - name: "Deploy to vercel"
+              run: vercel --prod --token=${{secrets.AMAN_TOKEN}} --confirm --name=reactapp  
