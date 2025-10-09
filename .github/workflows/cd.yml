@@ -23,8 +23,8 @@ jobs:
               uses: actions/download-artifact@v4
               with: 
                 name: dist
-                run-id: ${{ github.event.workflow_run.id}}
-                github-token: ${{github.token}}
+                run-id: ${{ github.event.workflow_run.id }}
+                github-token: ${{ github.token }}
 
             - name: "Deploy to vercel"
-              run: vercel --prod --token=${{secrets.ReaCtApp}} --confirm --name=reactapp  
+              run: vercel --prod --token=${{ secrets.REACT_TOKEN }} --confirm --name=reactapp  
