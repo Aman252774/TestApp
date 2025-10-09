@@ -18,7 +18,7 @@ jobs:
             
             - name: "Check node version"
               run: node --version
-
+              
             - name: "Clone the repository"
               uses: actions/checkout@v2 #uses: This is actual predefined action.
 
