@@ -1,3 +1,4 @@
+
 name: "Deploy to aws"
 
 
@@ -29,9 +30,6 @@ jobs: #
             - name: "List directories"
               run: ls
 
-            - name: "Run tests"
-              run: npm test
-
             - name: "Run Build"
               run: npm run build
            
@@ -40,9 +38,12 @@ jobs: #
               with:
                 name: dist
                 path: build
+
+            - name: "Run tests"
+              run: npm test
        
-            - name: "Install pm2 globally"
-              run: npm install pm2 -g
+            # - name: "Install pm2 globally"
+            #   run: npm install pm2 -g
 
             - name: "Deploy the aws"
-              run: pm2 start src
+              run: pm2 start App.js
