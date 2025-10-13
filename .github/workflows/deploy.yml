@@ -46,4 +46,4 @@ jobs: #
             #   run: npm install pm2 -g
 
             - name: "Deploy the aws"
-              run: pm2 start App.js
+              run: pm2 start src
